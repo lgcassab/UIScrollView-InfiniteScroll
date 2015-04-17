@@ -33,14 +33,14 @@ static void PBSwizzleMethod(Class c, SEL original, SEL alternate) {
 static const NSTimeInterval kPBInfiniteScrollAnimationDuration = 0.35;
 
 // Keys for values in associated dictionary
-static const void* kPBInfiniteScrollHandlerKey = &kPBInfiniteScrollHandlerKey;
-static const void* kPBInfiniteScrollIndicatorViewKey = &kPBInfiniteScrollIndicatorViewKey;
-static const void* kPBInfiniteScrollIndicatorStyleKey = &kPBInfiniteScrollIndicatorStyleKey;
-static const void* kPBInfiniteScrollStateKey = &kPBInfiniteScrollStateKey;
-static const void* kPBInfiniteScrollInitKey = &kPBInfiniteScrollInitKey;
+static const void* kPBInfiniteScrollHandlerKey			= &kPBInfiniteScrollHandlerKey;
+static const void* kPBInfiniteScrollIndicatorViewKey	= &kPBInfiniteScrollIndicatorViewKey;
+static const void* kPBInfiniteScrollIndicatorStyleKey	= &kPBInfiniteScrollIndicatorStyleKey;
+static const void* kPBInfiniteScrollStateKey			= &kPBInfiniteScrollStateKey;
+static const void* kPBInfiniteScrollInitKey				= &kPBInfiniteScrollInitKey;
 static const void* kPBInfiniteScrollExtraBottomInsetKey = &kPBInfiniteScrollExtraBottomInsetKey;
-static const void* kPBInfiniteScrollIndicatorMarginKey = &kPBInfiniteScrollIndicatorMarginKey;
-static const void* kPBInfiniteScrollTriggerOffsetKey = &kPBInfiniteScrollTriggerOffsetKey;
+static const void* kPBInfiniteScrollIndicatorMarginKey	= &kPBInfiniteScrollIndicatorMarginKey;
+static const void* kPBInfiniteScrollTriggerOffsetKey	= &kPBInfiniteScrollTriggerOffsetKey;
 
 // Infinite scroll states
 typedef NS_ENUM(NSInteger, PBInfiniteScrollState) {
@@ -222,7 +222,7 @@ CGFloat pb_infiniteScrollExtraBottomInset;
 #pragma mark - Gesture Recognizer
 
 - (void)pb_handlePanGesture:(UITapGestureRecognizer*)gestureRecognizer {
-    if(gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+    if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
         [self pb_scrollToInfiniteIndicatorIfNeeded];
     }
 }
@@ -453,14 +453,14 @@ CGFloat pb_infiniteScrollExtraBottomInset;
 	
 	// TODO: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	// The lower bound when infinite scroll should kick in
-	//    CGFloat actionOffset = contentHeight - self.bounds.size.height + self.contentInset.bottom - self.infiniteScrollTriggerOffset;
+//    CGFloat actionOffset = contentHeight - self.bounds.size.height + self.contentInset.bottom - self.infiniteScrollTriggerOffset;
 	CGFloat actionOffset = -([self pb_infiniteIndicatorRowHeight]);
 	
 	// Disable infinite scroll when scroll view is empty
 	// Default UITableView reports height = 1 on empty tables
 	BOOL hasActualContent = (self.contentSize.height > 1);
 	
-	//    if([self isDragging] && hasActualContent && contentOffset.y > actionOffset) {
+//    if([self isDragging] && hasActualContent && contentOffset.y > actionOffset) {
 	if([self isDragging] && hasActualContent && contentOffset.y < actionOffset) {
 		if(self.pb_infiniteScrollState == PBInfiniteScrollStateNone) {
 			TRACE(@"Action.");
