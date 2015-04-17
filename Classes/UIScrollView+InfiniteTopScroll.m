@@ -452,14 +452,4 @@ CGFloat pb_infiniteTopScrollExtraBottomInset;
 	}
 }
 
-#pragma mark - Deprecated methods
-
-- (void)setInfiniteIndicatorView:(UIView*)indicatorView {
-	[self setInfiniteTopScrollIndicatorView:indicatorView];
-}
-
-- (UIView*)infiniteIndicatorView {
-	return [self infiniteTopScrollIndicatorView];
-}
-
 @end
