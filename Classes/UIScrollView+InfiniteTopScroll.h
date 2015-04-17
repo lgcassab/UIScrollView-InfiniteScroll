@@ -1,5 +1,5 @@
 //
-//  UIScrollView+InfiniteScroll.h
+//  UIScrollView+InfiniteTopScroll.h
 //
 //  UIScrollView infinite scroll category
 //
@@ -9,12 +9,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIScrollView (InfiniteScroll)
+@interface UIScrollView (InfiniteTopScroll)
 
 /**
  *  Infinite scroll activity indicator style (default: UIActivityIndicatorViewStyleGray)
  */
-@property (nonatomic) UIActivityIndicatorViewStyle infiniteScrollIndicatorStyle;
+@property (nonatomic) UIActivityIndicatorViewStyle infiniteTopScrollIndicatorStyle;
 
 /**
  *  Infinite indicator view
@@ -27,35 +27,30 @@
  *
  *  Infinite scroll will call implemented methods during user interaction.
  */
-@property (nonatomic) UIView* infiniteScrollIndicatorView;
-
-/**
- *  This property exists for compatibility reasons. Use infiniteScrollIndicatorView instead.
- */
-@property (nonatomic) UIView* infiniteIndicatorView DEPRECATED_MSG_ATTRIBUTE("Use infiniteScrollIndicatorView instead.");
+@property (nonatomic) UIView* infiniteTopScrollIndicatorView;
 
 /**
  *  Vertical margin around indicator view (Default: 11)
  */
-@property (nonatomic) CGFloat infiniteScrollIndicatorMargin;
+@property (nonatomic) CGFloat infiniteTopScrollIndicatorMargin;
 
 /**
  *  Sets the offset between the real end of the scroll view content and the scroll position, so the handler can be triggered before reaching end.
  *  Defaults to 0.0;
  */
-@property (nonatomic) CGFloat infiniteScrollTriggerOffset;
+@property (nonatomic) CGFloat infiniteTopScrollTriggerOffset;
 
 /**
  *  Setup infinite scroll handler
  *
  *  @param handler a handler block
  */
-- (void)addInfiniteScrollWithHandler:(void(^)(UIScrollView* scrollView))handler;
+- (void)addInfiniteTopScrollWithHandler:(void(^)(UIScrollView* scrollView))handler;
 
 /**
  *  Unregister infinite scroll
  */
-- (void)removeInfiniteScroll;
+- (void)removeInfiniteTopScroll;
 
 /**
  *  Finish infinite scroll animations
@@ -65,7 +60,7 @@
  *
  *  @param handler a completion block handler called when animation finished
  */
-- (void)finishInfiniteScrollWithCompletion:(void(^)(UIScrollView* scrollView))handler;
+- (void)finishInfiniteTopScrollWithCompletion:(void(^)(UIScrollView* scrollView))handler;
 
 /**
  *  Finish infinite scroll animations
@@ -73,6 +68,6 @@
  *  You must call this method from your infinite scroll handler to finish all
  *  animations properly and reset infinite scroll state
  */
-- (void)finishInfiniteScroll;
+- (void)finishInfiniteTopScroll;
 
 @end

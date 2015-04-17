@@ -10,7 +10,7 @@
 #import "PhotoCell.h"
 
 #import "UIApplication+NetworkIndicator.h"
-#import "UIScrollView+InfiniteScroll.h"
+#import "UIScrollView+InfiniteTopScroll.h"
 #import "CustomInfiniteIndicator.h"
 
 static NSString* const kFlickrAPIEndpoint = @"https://api.flickr.com/services/feeds/photos_public.gne?tags=nature&nojsoncallback=1&format=json";
@@ -40,16 +40,16 @@ static NSString* const kFlickrAPIEndpoint = @"https://api.flickr.com/services/fe
     CustomInfiniteIndicator *indicator = [[CustomInfiniteIndicator alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
     
     // Set custom indicator
-    self.collectionView.infiniteScrollIndicatorView = indicator;
+    self.collectionView.infiniteTopScrollIndicatorView = indicator;
     
     // Increase indicator margins
-    self.collectionView.infiniteScrollIndicatorMargin = 20;
+    self.collectionView.infiniteTopScrollIndicatorMargin = 20;
     
     // Add infinite scroll handler
-    [self.collectionView addInfiniteScrollWithHandler:^(UIScrollView *scrollView) {
+    [self.collectionView addInfiniteTopScrollWithHandler:^(UIScrollView *scrollView) {
         [weakSelf loadFlickrFeedWithDelay:YES completion:^{
             // Finish infinite scroll animations
-            [scrollView finishInfiniteScroll];
+            [scrollView finishInfiniteTopScroll];
         }];
     }];
     

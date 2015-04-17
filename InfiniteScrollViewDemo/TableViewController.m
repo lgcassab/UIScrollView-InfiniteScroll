@@ -12,7 +12,7 @@
 #import "StoryModel.h"
 
 #import "CustomInfiniteIndicator.h"
-#import "UIScrollView+InfiniteScroll.h"
+#import "UIScrollView+InfiniteTopScroll.h"
 
 static NSString* const kAPIEndpointURL = @"https://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=%ld&page=%ld";
 static NSString* const kShowBrowserSegueIdentifier = @"ShowBrowser";
@@ -52,16 +52,16 @@ static NSString* const kJSONNumPagesKey = @"nbPages";
     CustomInfiniteIndicator *indicator = [[CustomInfiniteIndicator alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
     
     // Set custom indicator
-    self.tableView.infiniteScrollIndicatorView = indicator;
+    self.tableView.infiniteTopScrollIndicatorView = indicator;
     
     // Set custom trigger offset
-    self.tableView.infiniteScrollTriggerOffset = 500.0;
+    self.tableView.infiniteTopScrollTriggerOffset = 500.0;
     
     // Add infinite scroll handler
-    [self.tableView addInfiniteScrollWithHandler:^(UIScrollView* scrollView) {
+    [self.tableView addInfiniteTopScrollWithHandler:^(UIScrollView* scrollView) {
         [weakSelf loadRemoteDataWithDelay:YES completion:^{
             // Finish infinite scroll animations
-            [scrollView finishInfiniteScroll];
+            [scrollView finishInfiniteTopScroll];
         }];
     }];
     
